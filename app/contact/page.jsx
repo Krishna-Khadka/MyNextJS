@@ -1,8 +1,19 @@
 import React from 'react'
+import ContactList from './ContactList'
 
 const Contact = () => {
     return (
-        <h1 className='text-red-700 text-3xl font-bold'>Hello Conatct Me !!</h1>
+        <main>
+            <nav>
+                <div>
+                    <h2>Contacts</h2>
+                    <p><small>Current Contacts</small></p>
+                </div>
+            </nav>
+
+            <ContactList />
+        </main>
+
     )
 }
 
