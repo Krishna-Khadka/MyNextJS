@@ -1,5 +1,18 @@
-
+import { notFound } from 'next/navigation'
 import React from 'react'
+
+
+export const dynamicParams = true
+export async function generateStaticRendering() {
+    //[{id: '1'},{id: '2'},...]
+    const res = await fetch('http://localhost:4000/contacts')
+
+    const contacts = await res.json()
+
+    return contacts.map((item) => ({
+        id: item.id
+    }))
+}
 
 async function getContact(id) {
     const res = await fetch('http://localhost:4000/contacts/' + id, {
@@ -7,6 +20,11 @@ async function getContact(id) {
             revalidate: 60
         }
     })
+
+    if (!res.ok) {
+        notFound()
+    }
+
     return await res.json()
 }
 
