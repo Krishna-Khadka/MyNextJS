@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ContactList from './ContactList'
+import Loading from '../loading'
 
 const Contact = () => {
     return (
@@ -11,7 +12,10 @@ const Contact = () => {
                 </div>
             </nav>
 
-            <ContactList />
+            <Suspense fallback= {<Loading />}>
+                <ContactList />
+            </Suspense>
+
         </main>
 
     )

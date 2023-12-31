@@ -10,6 +10,9 @@ import React from 'react'
 
 //fetch the data
 async function getContacts() {
+    // imitate delay
+    await new Promise(resolve => setTimeout(resolve, 3000))
+
     const res = await fetch('http://localhost:4000/contacts', {
         next: {
             revalidate: 0

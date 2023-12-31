@@ -15,6 +15,9 @@ export async function generateStaticRendering() {
 }
 
 async function getContact(id) {
+    // imitate delay
+    await new Promise(resolve => setTimeout(resolve, 3000))
+
     const res = await fetch('http://localhost:4000/contacts/' + id, {
         next: {
             revalidate: 60
